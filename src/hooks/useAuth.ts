@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import NotificationContext from "../context/NotificationContext";
+import AuthContext from "../context/AuthContext";
 
-export const useNotification = () => {
-  const context = useContext(NotificationContext);
+export const useAuth = () => {
+  const context = useContext(AuthContext);
   if (context === undefined) {
     throw new Error("useTheme must be used within a ThemeProvider");
   }

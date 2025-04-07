@@ -3,10 +3,10 @@ import Header from "./components/Header";
 import ItemList from "./components/ItemList";
 import ComplexForm from "./components/ComplexForm";
 import NotificationSystem from "./components/NotificationSystem";
-import { useAppContext } from "./hooks/useAppContext";
+import { useThemeContext } from "./hooks/useThemeContext";
 
 const App: React.FC = () => {
-  const { theme } = useAppContext();
+  const { theme } = useThemeContext();
   return (
     <div
       className={`min-h-screen ${theme === "light" ? "bg-gray-100" : "bg-gray-900 text-white"}`}

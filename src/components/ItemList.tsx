@@ -1,13 +1,14 @@
+/* eslint-disable prettier/prettier */
 import React, { useState } from "react";
 import { renderLog } from "../utils";
-import { useAppContext } from "../hooks/useAppContext";
 import { useItems } from "../hooks/useItems";
 import { memo } from "../@lib";
+import { useThemeContext } from "../hooks/useThemeContext";
 
 const ItemList: React.FC = memo(() => {
   renderLog("ItemList rendered");
   const [filter, setFilter] = useState("");
-  const { theme } = useAppContext();
+  const { theme } = useThemeContext();
   const { items, addItems } = useItems();
 
   const filteredItems = items.filter(

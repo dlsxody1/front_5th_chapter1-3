@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React, { useState } from "react";
 
 import ThemeContext from "../context/ThemeContext";
@@ -18,7 +17,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
       theme,
       toggleTheme,
     }),
-    [theme, toggleTheme]
+    [theme, toggleTheme],
   );
 
   return (
