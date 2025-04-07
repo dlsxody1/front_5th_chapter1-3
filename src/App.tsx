@@ -1,69 +1,15 @@
-/* eslint-disable prettier/prettier */
-import React, { useState } from "react";
-import { generateItems } from "./utils";
-
-import { AppContextType, User, Notification } from "./types/types";
+import React from "react";
 import Header from "./components/Header";
 import ItemList from "./components/ItemList";
 import ComplexForm from "./components/ComplexForm";
 import NotificationSystem from "./components/NotificationSystem";
-import AppContext from "./provider/AppContext";
+import { ThemeProvider } from "./provider/ThemeProvider";
+import { useTheme } from "./@lib/hooks/useTheme";
 
 const App: React.FC = () => {
-  const [theme, setTheme] = useState("light");
-  const [items, setItems] = useState(generateItems(1000));
-  const [user, setUser] = useState<User | null>(null);
-  const [notifications, setNotifications] = useState<Notification[]>([]);
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
-  };
-
-  const addItems = () => {
-    setItems((prevItems) => [
-      ...prevItems,
-      ...generateItems(1000, prevItems.length),
-    ]);
-  };
-
-  const login = (email: string) => {
-    setUser({ id: 1, name: "홍길동", email });
-    addNotification("성공적으로 로그인되었습니다", "success");
-  };
-
-  const logout = () => {
-    setUser(null);
-    addNotification("로그아웃되었습니다", "info");
-  };
-
-  const addNotification = (message: string, type: Notification["type"]) => {
-    const newNotification: Notification = {
-      id: Date.now(),
-      message,
-      type,
-    };
-    setNotifications((prev) => [...prev, newNotification]);
-  };
-
-  const removeNotification = (id: number) => {
-    setNotifications((prev) =>
-      prev.filter((notification) => notification.id !== id)
-    );
-  };
-
-  const contextValue: AppContextType = {
-    theme,
-    toggleTheme,
-    user,
-    login,
-    logout,
-    notifications,
-    addNotification,
-    removeNotification,
-  };
-
+  const { theme } = useTheme();
   return (
-    <AppContext.Provider value={contextValue}>
+    <ThemeProvider>
       <div
         className={`min-h-screen ${theme === "light" ? "bg-gray-100" : "bg-gray-900 text-white"}`}
       >
@@ -71,7 +17,7 @@ const App: React.FC = () => {
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col md:flex-row">
             <div className="w-full md:w-1/2 md:pr-4">
-              <ItemList items={items} onAddItemsClick={addItems} />
+              <ItemList />
             </div>
             <div className="w-full md:w-1/2 md:pl-4">
               <ComplexForm />
@@ -80,7 +26,7 @@ const App: React.FC = () => {
         </div>
         <NotificationSystem />
       </div>
-    </AppContext.Provider>
+    </ThemeProvider>
   );
 };
 

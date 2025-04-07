@@ -1,10 +1,10 @@
 import React from "react";
-import { useAppContext } from "../@lib/hooks/useAppContext";
 import { renderLog } from "../utils";
+import useNotification from "../@lib/hooks/useNotification";
 
 const NotificationSystem: React.FC = () => {
   renderLog("NotificationSystem rendered");
-  const { notifications, removeNotification } = useAppContext();
+  const { notifications, removeNotification } = useNotification();
 
   return (
     <div className="fixed bottom-4 right-4 space-y-2">

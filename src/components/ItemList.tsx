@@ -1,21 +1,18 @@
-/* eslint-disable prettier/prettier */
 import React, { useState } from "react";
 import { renderLog } from "../utils";
 import { useAppContext } from "../@lib/hooks/useAppContext";
-import { Item } from "../types/types";
+import { useItems } from "../@lib/hooks/useItems";
 
-const ItemList: React.FC<{
-  items: Item[];
-  onAddItemsClick: () => void;
-}> = ({ items, onAddItemsClick }) => {
+const ItemList: React.FC = () => {
   renderLog("ItemList rendered");
   const [filter, setFilter] = useState("");
   const { theme } = useAppContext();
+  const { items, addItems } = useItems();
 
   const filteredItems = items.filter(
     (item) =>
       item.name.toLowerCase().includes(filter.toLowerCase()) ||
-      item.category.toLowerCase().includes(filter.toLowerCase())
+      item.category.toLowerCase().includes(filter.toLowerCase()),
   );
 
   const totalPrice = filteredItems.reduce((sum, item) => sum + item.price, 0);
@@ -30,7 +27,7 @@ const ItemList: React.FC<{
           <button
             type="button"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-xs"
-            onClick={onAddItemsClick}
+            onClick={() => addItems}
           >
             대량추가
           </button>

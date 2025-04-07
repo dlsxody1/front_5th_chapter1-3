@@ -1,15 +1,17 @@
 import React from "react";
 import { renderLog } from "../utils";
-import { useAppContext } from "../@lib/hooks/useAppContext";
+import { useTheme } from "../@lib/hooks/useTheme";
+import useAuth from "../@lib/hooks/useAuth";
 
 // Header 컴포넌트
 const Header: React.FC = () => {
   renderLog("Header rendered");
-  const { theme, toggleTheme, user, login, logout } = useAppContext();
+  const { theme, toggleTheme } = useTheme();
+  const { login, logout, user } = useAuth();
 
   const handleLogin = () => {
     // 실제 애플리케이션에서는 사용자 입력을 받아야 합니다.
-    login("user@example.com", "password");
+    login("user@example.com");
   };
 
   return (
