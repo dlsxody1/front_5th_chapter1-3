@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { User } from "../../types/types";
-import useNotification from "./useNotification";
+import useNotification from "../../hooks/useNotification";
 
 const useAuth = () => {
   const [user, setUser] = useState<User | null>(null);

@@ -1,8 +1,7 @@
-/* eslint-disable prettier/prettier */
 import React, { useState } from "react";
 import { renderLog } from "../utils";
-import { useAppContext } from "../@lib/hooks/useAppContext";
-import { useItems } from "../@lib/hooks/useItems";
+import { useAppContext } from "../hooks/useAppContext";
+import { useItems } from "../hooks/useItems";
 import { memo } from "../@lib";
 
 const ItemList: React.FC = memo(() => {

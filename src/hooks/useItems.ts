@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { generateItems } from "../../utils";
+import { generateItems } from "../utils";
 
 export const useItems = () => {
   const [items, setItems] = useState(generateItems(1000));

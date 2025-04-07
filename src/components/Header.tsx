@@ -1,7 +1,7 @@
 import React from "react";
 import { renderLog } from "../utils";
 import useAuth from "../@lib/hooks/useAuth";
-import { useAppContext } from "../@lib/hooks/useAppContext";
+import { useAppContext } from "../hooks/useAppContext";
 
 // Header 컴포넌트
 const Header: React.FC = () => {

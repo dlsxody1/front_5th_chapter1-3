@@ -1,30 +1,43 @@
-import React, { ReactNode, useMemo } from "react";
-import useNotification from "../@lib/hooks/useNotification";
+/* eslint-disable prettier/prettier */
+import { useState } from "react";
+import { Notification } from "../types/types";
 import NotificationContext from "../context/NotificationContext";
+import { useCallback, useMemo } from "../@lib";
 
-type NotificationProviderProps = {
-  children: ReactNode;
-};
-
-export const NotificationProvider: React.FC<NotificationProviderProps> = ({
+export const NotificationProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const { addNotification, notifications, removeNotification } =
-    useNotification();
+  const [notifications, setNotifications] = useState<Notification[]>([]);
 
-  // useMemo로 context 값 메모이제이션
-  const value = useMemo(
+  const addNotification = useCallback(
+    (message: string, type: Notification["type"]) => {
+      const newNotification: Notification = {
+        id: Date.now(),
+        message,
+        type,
+      };
+      setNotifications((prev) => [...prev, newNotification]);
+    },
+    []
+  );
+
+  const removeNotification = useCallback((id: number) => {
+    setNotifications((prev) =>
+      prev.filter((notification) => notification.id !== id)
+    );
+  }, []);
+
+  const NotificationContextValue = useMemo(
     () => ({
-      addNotification,
       notifications,
+      addNotification,
       removeNotification,
     }),
-
-    [addNotification, removeNotification, notifications],
+    [notifications, addNotification, removeNotification]
   );
 
   return (
-    <NotificationContext.Provider value={value}>
+    <NotificationContext.Provider value={NotificationContextValue}>
       {children}
     </NotificationContext.Provider>
   );

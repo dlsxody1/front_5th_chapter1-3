@@ -9,11 +9,11 @@ import { NotificationProvider } from "./provider/NotificationProvider";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider>
-      <AuthProvider>
-        <NotificationProvider>
+      <NotificationProvider>
+        <AuthProvider>
           <App />
-        </NotificationProvider>
-      </AuthProvider>
+        </AuthProvider>
+      </NotificationProvider>
     </ThemeProvider>
   </StrictMode>
 );

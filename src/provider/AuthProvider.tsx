@@ -1,25 +1,39 @@
 /* eslint-disable prettier/prettier */
-import React, { ReactNode, useMemo } from "react";
+import { useState } from "react";
+
+import { User } from "../types/types";
+import { useCallback, useMemo } from "../@lib";
 import AuthContext from "../context/AuthContext";
-import useAuth from "../@lib/hooks/useAuth";
+import useNotification from "../hooks/useNotification";
 
-type AuthProviderProps = {
-  children: ReactNode;
-};
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [user, setUser] = useState<User | null>(null);
+  const { addNotification } = useNotification();
 
-export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const { user, login, logout } = useAuth();
+  const login = useCallback((email: string) => {
+    setUser({ id: 1, name: "홍길동", email });
+    addNotification("성공적으로 로그인되었습니다", "success");
+  }, []);
 
-  // useMemo로 context 값 메모이제이션
-  const value = useMemo(
+  const logout = useCallback(() => {
+    setUser(null);
+    addNotification("로그아웃되었습니다", "info");
+  }, []);
+
+  const AuthContextValue = useMemo(
     () => ({
       user,
       login,
       logout,
     }),
-
     [user, login, logout]
   );
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={AuthContextValue}>
+      {children}
+    </AuthContext.Provider>
+  );
 };

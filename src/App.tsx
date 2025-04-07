@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import ItemList from "./components/ItemList";
 import ComplexForm from "./components/ComplexForm";
 import NotificationSystem from "./components/NotificationSystem";
-import { useAppContext } from "./@lib/hooks/useAppContext";
+import { useAppContext } from "./hooks/useAppContext";
 
 const App: React.FC = () => {
   const { theme } = useAppContext();

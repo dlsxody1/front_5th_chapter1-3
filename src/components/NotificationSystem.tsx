@@ -1,6 +1,6 @@
 import React from "react";
 import { renderLog } from "../utils";
-import useNotification from "../@lib/hooks/useNotification";
+import useNotification from "../hooks/useNotification";
 
 const NotificationSystem: React.FC = () => {
   renderLog("NotificationSystem rendered");

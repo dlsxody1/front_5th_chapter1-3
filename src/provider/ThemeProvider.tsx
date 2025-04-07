@@ -1,16 +1,19 @@
 /* eslint-disable prettier/prettier */
-import React, { ReactNode, useMemo } from "react";
+import React, { useState } from "react";
+
 import ThemeContext from "../context/ThemeContext";
-import { useTheme } from "../@lib/hooks/useTheme";
+import { useCallback, useMemo } from "../@lib";
 
-type ThemeProviderProps = {
-  children: ReactNode;
-};
+export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const { theme, toggleTheme } = useTheme();
+  const toggleTheme = useCallback(() => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  }, []);
 
-  const value = useMemo(
+  const themeContextValue = useMemo(
     () => ({
       theme,
       toggleTheme,
@@ -19,6 +22,14 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   );
 
   return (
-    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+    <ThemeContext.Provider value={themeContextValue}>
+      <div
+        className={`min-h-screen ${
+          theme === "light" ? "bg-gray-100" : "bg-gray-900 text-white"
+        }`}
+      >
+        {children}
+      </div>
+    </ThemeContext.Provider>
   );
 };
