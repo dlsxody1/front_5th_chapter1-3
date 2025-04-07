@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { useState } from "react";
 import { User } from "../types/types";
 import { useCallback, useMemo } from "../@lib";
@@ -29,7 +28,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       login,
       logout,
     }),
-    [user, login, logout]
+    [user, login, logout],
   );
 
   return (

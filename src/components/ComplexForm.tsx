@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { renderLog } from "../utils";
-
-import { memo } from "../@lib";
 import { useNotification } from "../hooks/useNotification";
+import { memo } from "../@lib/hocs/memo";
 
-export const ComplexForm: React.FC = memo(() => {
+export const ComplexForm: React.FC = () => {
   renderLog("ComplexForm rendered");
   const { addNotification } = useNotification();
   const [formData, setFormData] = useState({
@@ -86,6 +85,6 @@ export const ComplexForm: React.FC = memo(() => {
       </form>
     </div>
   );
-});
+};
 
-export default ComplexForm;
+export default memo(ComplexForm);

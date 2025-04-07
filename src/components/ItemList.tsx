@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 import { renderLog } from "../utils";
 import { useItems } from "../hooks/useItems";
-import { memo } from "../@lib";
 import { useThemeContext } from "../hooks/useThemeContext";
+import { memo } from "../@lib";
 
-const ItemList: React.FC = memo(() => {
+const ItemList: React.FC = () => {
   renderLog("ItemList rendered");
   const [filter, setFilter] = useState("");
   const { theme } = useThemeContext();
@@ -29,7 +29,7 @@ const ItemList: React.FC = memo(() => {
           <button
             type="button"
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-xs"
-            onClick={() => addItems}
+            onClick={addItems}
           >
             대량추가
           </button>
@@ -59,6 +59,6 @@ const ItemList: React.FC = memo(() => {
       </ul>
     </div>
   );
-});
+};
 
-export default ItemList;
+export default memo(ItemList);

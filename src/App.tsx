@@ -3,14 +3,11 @@ import Header from "./components/Header";
 import ItemList from "./components/ItemList";
 import ComplexForm from "./components/ComplexForm";
 import NotificationSystem from "./components/NotificationSystem";
-import { useThemeContext } from "./hooks/useThemeContext";
+import Layout from "./components/Layout";
 
 const App: React.FC = () => {
-  const { theme } = useThemeContext();
   return (
-    <div
-      className={`min-h-screen ${theme === "light" ? "bg-gray-100" : "bg-gray-900 text-white"}`}
-    >
+    <Layout>
       <Header />
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row">
@@ -23,7 +20,7 @@ const App: React.FC = () => {
         </div>
       </div>
       <NotificationSystem />
-    </div>
+    </Layout>
   );
 };
 
