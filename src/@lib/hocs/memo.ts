@@ -1,15 +1,14 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { shallowEquals } from "../equalities";
 import { ComponentType, createElement } from "react";
 import { useRef } from "../hooks";
 
 export function memo<P extends object>(
   Component: ComponentType<P>,
-  // eslint-disable-next-line prettier/prettier
-  _equals = shallowEquals
+
+  _equals = shallowEquals,
 ) {
   // 1. 이전 props를 저장할 ref 생성
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+
   const MemoComponent = (props: P) => {
     // 이전 props와 렌더링 결과를 저장하는 ref
     const ref = useRef<{
