@@ -1,9 +1,11 @@
+/* eslint-disable prettier/prettier */
 import React, { useState } from "react";
 import { renderLog } from "../utils";
 import { useAppContext } from "../@lib/hooks/useAppContext";
 import { useItems } from "../@lib/hooks/useItems";
+import { memo } from "../@lib";
 
-const ItemList: React.FC = () => {
+const ItemList: React.FC = memo(() => {
   renderLog("ItemList rendered");
   const [filter, setFilter] = useState("");
   const { theme } = useAppContext();
@@ -12,7 +14,7 @@ const ItemList: React.FC = () => {
   const filteredItems = items.filter(
     (item) =>
       item.name.toLowerCase().includes(filter.toLowerCase()) ||
-      item.category.toLowerCase().includes(filter.toLowerCase()),
+      item.category.toLowerCase().includes(filter.toLowerCase())
   );
 
   const totalPrice = filteredItems.reduce((sum, item) => sum + item.price, 0);
@@ -57,6 +59,6 @@ const ItemList: React.FC = () => {
       </ul>
     </div>
   );
-};
+});
 
 export default ItemList;

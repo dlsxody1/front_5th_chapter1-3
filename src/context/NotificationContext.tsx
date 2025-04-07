@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { createContext } from "react";
 import { Notification } from "../types/types";
 
@@ -9,7 +8,7 @@ type NotificationContextType = {
 };
 
 const NotificationContext = createContext<NotificationContextType | undefined>(
-  undefined
+  undefined,
 );
 
 export default NotificationContext;

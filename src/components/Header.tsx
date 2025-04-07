@@ -1,12 +1,12 @@
 import React from "react";
 import { renderLog } from "../utils";
-import { useTheme } from "../@lib/hooks/useTheme";
 import useAuth from "../@lib/hooks/useAuth";
+import { useAppContext } from "../@lib/hooks/useAppContext";
 
 // Header 컴포넌트
 const Header: React.FC = () => {
   renderLog("Header rendered");
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useAppContext();
   const { login, logout, user } = useAuth();
 
   const handleLogin = () => {
