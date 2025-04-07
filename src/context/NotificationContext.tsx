@@ -1,14 +1,14 @@
+/* eslint-disable prettier/prettier */
 import { createContext } from "react";
 import { Notification } from "../types/types";
 
 type NotificationContextType = {
   notifications: Notification[];
-  addNotification: (message: string, type: string) => void;
-  removeNotification: (id: string) => void;
+  addNotification: (message: string, type: Notification["type"]) => void;
+  removeNotification: (id: number) => void;
 };
 
 const NotificationContext = createContext<NotificationContextType | undefined>(
-  // eslint-disable-next-line prettier/prettier
   undefined
 );
 

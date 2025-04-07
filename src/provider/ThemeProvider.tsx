@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React, { ReactNode, useMemo } from "react";
 import ThemeContext from "../context/ThemeContext";
 import { useTheme } from "../@lib/hooks/useTheme";
@@ -16,7 +15,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       theme,
       toggleTheme,
     }),
-    [theme]
+    [theme],
   );
 
   return (
