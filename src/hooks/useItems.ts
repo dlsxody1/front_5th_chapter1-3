@@ -1,5 +1,6 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { generateItems } from "../utils";
+import { useRef } from "../@lib";
 
 type Item = { id: number; name: string; category: string; price: number };
 
