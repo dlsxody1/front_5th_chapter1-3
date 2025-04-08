@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { DependencyList } from "react";
 import { shallowEquals } from "../equalities";
 import { useRef } from "./useRef";
@@ -6,7 +5,7 @@ import { useRef } from "./useRef";
 export function useMemo<T>(
   factory: () => T,
   _deps: DependencyList,
-  _equals = shallowEquals
+  _equals = shallowEquals,
 ): T {
   //이전값, 의존성배열, 결과를 저장할 ref (렌더링 사이에 값을 유지하기 위함.)
   const ref = useRef<{

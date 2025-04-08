@@ -5,8 +5,8 @@ import ComplexForm from "./components/ComplexForm";
 import NotificationSystem from "./components/NotificationSystem";
 import Layout from "./components/Layout";
 import { ThemeProvider } from "./provider/ThemeProvider";
-import { AuthProvider } from "./provider/AuthProvider";
 import { NotificationProvider } from "./provider/NotificationProvider";
+import { AuthProvider } from "./provider/AuthProvider";
 
 const App: React.FC = () => {
   return (
