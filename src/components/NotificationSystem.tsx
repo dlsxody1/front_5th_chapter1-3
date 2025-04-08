@@ -1,7 +1,6 @@
 import React from "react";
 import { renderLog } from "../utils";
 import { useNotification } from "../hooks/useNotification";
-import { memo } from "../@lib";
 
 const NotificationSystem: React.FC = () => {
   renderLog("NotificationSystem rendered");
@@ -35,4 +34,4 @@ const NotificationSystem: React.FC = () => {
   );
 };
 
-export default memo(NotificationSystem);
+export default NotificationSystem;

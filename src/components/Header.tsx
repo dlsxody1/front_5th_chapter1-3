@@ -1,9 +1,7 @@
 import React from "react";
 import { renderLog } from "../utils";
-
 import { useThemeContext } from "../hooks/useThemeContext";
 import { useAuth } from "../hooks/useAuth";
-import { memo } from "../@lib";
 
 // Header 컴포넌트
 const Header: React.FC = () => {
@@ -51,4 +49,4 @@ const Header: React.FC = () => {
   );
 };
 
-export default memo(Header);
+export default Header;
